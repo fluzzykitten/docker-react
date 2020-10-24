@@ -9,3 +9,6 @@ before_install:
 before_build:
   - cd ./frontend
   - docker build -t fluzzykitten/docker-react -f ./Dockerfile.dev .
+
+script:
+  - npm run test
