@@ -2,6 +2,10 @@ sudo: required
 services:
   - docker
 
+before_install:
+  - cd ./frontend
+  - docker build -t fluzzykitten/docker-react -f ./Dockerfile.dev .
+
 before_build:
   - cd ./frontend
   - docker build -t fluzzykitten/docker-react -f ./Dockerfile.dev .
