@@ -1,6 +1,7 @@
 sudo: required
 services:
   - docker
+language: generic
 
 before_install:
   - cd ./frontend
@@ -12,4 +13,4 @@ before_build:
   - docker build -t fluzzykitten/docker-react -f ./Dockerfile.dev .
 
 script:
-  - npm run test
+  - docker run -e CI=true USERNAME/docker-react npm run test
