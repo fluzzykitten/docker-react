@@ -1,0 +1,6 @@
+sudo: required
+services:
+  - docker
+
+before_build:
+  - docker build -t fluzzykitten/docker-react -f ./frontend/Dockerfile.dev .
