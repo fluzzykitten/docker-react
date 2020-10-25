@@ -19,7 +19,7 @@ deploy:
   provider: elasticbeanstalk
   region: "us-east-2"
   app: "react-web"
-  env: "ReactWeb-env"
+  env: "ReactWeb-env-1"
   bucket_name: "elasticbeanstalk-us-east-2-165372868605"
   bucket_path: "react-web"
   on:
