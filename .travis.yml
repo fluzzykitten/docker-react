@@ -4,7 +4,7 @@ services:
 language: generic
 
 before_install:
-  - docker build -t fluzzykitten/docker-test -f ./complex/client/DockerfileFAIL.dev ./complex/client
+  - docker build -t fluzzykitten/docker-test -f ./complex/client/Dockerfile.dev ./complex/client
 
 script:
   - docker run -e CI=true fluzzykitten/docker-test npm run test -- --coverage
