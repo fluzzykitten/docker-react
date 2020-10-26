@@ -10,10 +10,10 @@ script:
   - docker run -e CI=true fluzzykitten/docker-test npm run test -- --coverage
 
 after_success:
-  - docker build -t fluzzykitten/multi-client ./complex/client ./complex/client
-  - docker build -t fluzzykitten/multi-nginx ./complex/nginx ./complex/nginx
-  - docker build -t fluzzykitten/multi-server ./complex/server ./complex/server
-  - docker build -t fluzzykitten/multi-worker ./complex/worker ./complex/worker
+  - docker build -t fluzzykitten/multi-client -f ./complex/client/Dockerfile ./complex/client
+  - docker build -t fluzzykitten/multi-nginx -f ./complex/nginx/Dockerfile ./complex/nginx
+  - docker build -t fluzzykitten/multi-server -f ./complex/server/Dockerfile ./complex/server
+  - docker build -t fluzzykitten/multi-worker -f ./complex/worker/Dockerfile ./complex/worker
 
 #log into docker CLI
   - echo "DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
