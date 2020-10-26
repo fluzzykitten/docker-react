@@ -1,0 +1,28 @@
+sudo: required
+services:
+  - docker
+language: generic
+
+before_install:
+  - cd ./frontend
+  - docker build -t fluzzykitten/docker-react -f ./Dockerfile.dev .
+
+before_build:
+  - cd ./frontend
+  - ls -lart
+  - docker build -t fluzzykitten/docker-react -f ./Dockerfile.dev .
+
+script:
+  - docker run -e CI=true fluzzykitten/docker-react npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "react-web"
+  env: "ReactWeb-env-1"
+  bucket_name: "elasticbeanstalk-us-east-2-165372868605"
+  bucket_path: "react-web"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
